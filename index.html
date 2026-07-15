@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f1ea" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="description" content="Một bức thư dành cho Trinh — kể bằng chuyển động, khoảng lặng và ánh sáng." />
+    <title>Thư gửi Trinh của anh</title>
+  </head>
+  <body class="is-locked">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <div class="preloader" id="preloader" aria-live="polite">
+      <div class="preloader__mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="preloader__wordmark">Một bức thư đang được mở ra</div>
+      <div class="preloader__track"><span id="loading-bar"></span></div>
+      <div class="preloader__percent" id="loading-percent">00</div>
+    </div>
+
+    <section class="gate" id="gate" aria-label="Phong thư">
+      <div class="gate__backdrop"></div>
+      <div class="gate__halo gate__halo--one"></div>
+      <div class="gate__halo gate__halo--two"></div>
+
+      <div class="gate__panel">
+        <div class="gate__topline">
+          <span>Hà Nội</span>
+          <span>16 · 07 · 2026</span>
+        </div>
+
+        <div class="envelope" id="envelope" aria-hidden="true">
+          <div class="envelope__shadow"></div>
+          <div class="envelope__body"></div>
+          <div class="envelope__flap"></div>
+          <div class="envelope__pocket"></div>
+          <div class="wax-seal" id="wax-seal">
+            <span class="wax-seal__ring"></span>
+            <span class="wax-seal__stamp">T</span>
+          </div>
+        </div>
+
+        <button class="gate__trigger" id="open-letter" type="button" aria-label="Chạm vào sáp niêm phong để mở thư">
+          <span class="gate__trigger-ring"></span>
+          <span class="gate__trigger-label">Chạm vào sáp niêm phong</span>
+          <span class="gate__trigger-sub">một hành trình bắt đầu từ đây</span>
+        </button>
+        <p class="gate__hint">Hãy dành cho bức thư này một chút thời gian.</p>
+      </div>
+
+      <div class="gate__footer">
+        <span class="gate__footer-line"></span>
+        <span>For Trinh, with all my heart</span>
+        <span class="gate__footer-line"></span>
+      </div>
+    </section>
+
+    <div class="site-shell" id="site-shell">
+      <canvas class="webgl-canvas" id="webgl-canvas" aria-hidden="true"></canvas>
+      <div class="petal-field" id="petal-field" aria-hidden="true"></div>
+
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Về đầu bức thư">
+          <span class="brand__monogram">T</span>
+          <span class="brand__text">a letter in motion</span>
+        </a>
+        <div class="header-tools">
+          <button class="icon-button" id="audio-toggle" type="button" aria-label="Bật âm thanh nền" aria-pressed="false">
+            <i data-lucide="volume-2"></i>
+          </button>
+          <button class="icon-button" id="reset-letter" type="button" aria-label="Đóng thư và xem lại từ đầu">
+            <i data-lucide="rotate-ccw"></i>
+          </button>
+        </div>
+      </header>
+
+      <aside class="story-spine" id="story-spine" aria-label="Tiến trình bức thư">
+        <svg viewBox="0 0 20 1000" preserveAspectRatio="none" aria-hidden="true">
+          <path class="spine__track" d="M10 0 C2 80 18 140 10 220 C2 300 18 380 10 460 C2 540 18 620 10 700 C2 780 18 860 10 1000" />
+          <path class="spine__progress" id="story-path" pathLength="1" d="M10 0 C2 80 18 140 10 220 C2 300 18 380 10 460 C2 540 18 620 10 700 C2 780 18 860 10 1000" />
+        </svg>
+        <span class="spine__dot" id="spine-dot"></span>
+      </aside>
+
+      <div class="scroll-progress" aria-hidden="true">
+        <span id="scroll-index">00</span>
+        <span class="scroll-progress__slash">/</span>
+        <span>10</span>
+      </div>
+
+      <main class="story" id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero__aura hero__aura--left"></div>
+          <div class="hero__aura hero__aura--right"></div>
+          <div class="hero__inner">
+            <p class="eyebrow hero__eyebrow" data-reveal>một bức thư kể bằng ánh sáng</p>
+            <h1 class="hero__title" id="hero-title" data-split>Thư gửi<br /><em>Trinh</em> của anh</h1>
+            <div class="hero__lower">
+              <p class="hero__date">Hà Nội<br />16 tháng 07 năm 2026</p>
+              <p class="hero__intro">Có những điều khi nói ra sẽ tan vào không khí.<br />Nên anh viết chúng xuống đây — để em có thể mang theo.</p>
+            </div>
+          </div>
+          <button class="scroll-cue" id="scroll-cue" type="button" aria-label="Bắt đầu đọc thư">
+            <span>cuộn để đọc</span>
+            <i data-lucide="arrow-down"></i>
+          </button>
+        </section>
+
+        <div class="act-list" id="act-list"></div>
+
+        <section class="epilogue" aria-labelledby="epilogue-title">
+          <div class="epilogue__petal" aria-hidden="true"></div>
+          <p class="eyebrow" data-reveal>the end / and yet, not the end</p>
+          <h2 id="epilogue-title" data-split>Anh yêu em.</h2>
+          <p class="epilogue__signature" data-reveal>Anh Be của em</p>
+          <p class="epilogue__small" data-reveal>Hẹn một ngày mình lại ngồi cạnh nhau, kể tiếp những điều còn dang dở.</p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>thư gửi Trinh</span>
+        <span class="site-footer__line"></span>
+        <span>made with patience &amp; love</span>
+      </footer>
+    </div>
+
+    <audio id="letter-audio" preload="none" loop data-src="./audio/letter.mp3" aria-label="Nhạc nền của bức thư"></audio>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
