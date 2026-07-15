@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: './',
+  base: '/love-letter/',
   build: {
     chunkSizeWarningLimit: 700,
     rollupOptions: {
