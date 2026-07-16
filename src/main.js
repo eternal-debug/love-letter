@@ -450,6 +450,7 @@ function animateOpen() {
   const shell = $('#site-shell');
   const trigger = $('#open-letter');
   trigger.disabled = true;
+  document.body.classList.remove('is-locked'); 
   document.body.classList.add('is-unlocking');
   window.__startLetterAudio?.();
 
@@ -480,6 +481,8 @@ function resetLetter() {
   const seal = $('#wax-seal');
   const envelope = $('#envelope');
   const trigger = $('#open-letter');
+  document.body.classList.add('is-locked');
+  document.body.classList.remove('is-unlocking');
   gate.style.display = 'flex';
   gate.style.pointerEvents = 'auto';
   gate.setAttribute('aria-hidden', 'false');
